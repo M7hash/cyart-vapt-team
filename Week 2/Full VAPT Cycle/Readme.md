@@ -49,7 +49,7 @@ sqlmap -u "http://192.168.1.200/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" -
 sqlmap ... -D dvwa -T users --dump
 ```
 
-## Detection (OpenVAS Scan Log)
+## Detection 
 
 | Timestamp           | Target IP     | Vulnerability | PTES Phase     |
 | ------------------- | ------------- | ------------- | -------------- |
