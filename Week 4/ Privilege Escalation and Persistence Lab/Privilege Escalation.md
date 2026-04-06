@@ -5,6 +5,7 @@ To perform privilege escalation on a vulnerable VM and establish persistence usi
 
 ## 2. Lab Environment
 Attacker Machine: Kali Linux
+
 Target Machine: VulnHub VM
 Target IP: 192.168.56.5
 Tools Used: Meterpreter, LinPEAS, PowerSploit
