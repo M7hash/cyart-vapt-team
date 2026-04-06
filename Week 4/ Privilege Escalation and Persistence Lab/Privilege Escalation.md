@@ -7,7 +7,9 @@ To perform privilege escalation on a vulnerable VM and establish persistence usi
 Attacker Machine: Kali Linux
 
 Target Machine: VulnHub VM
+
 Target IP: 192.168.56.5
+
 Tools Used: Meterpreter, LinPEAS, PowerSploit
 
 ## 3. Privilege Escalation
@@ -32,7 +34,8 @@ Successfully escalated privileges to root
 
 ## 3.3 Result Log
 
-Task ID	Technique	Target IP	Status	Outcome
+Task ID
+Technique	Target IP	Status	Outcome
 010	SUID Exploit	192.168.56.5	Success	Root Shell
 
 ## 4. Persistence
