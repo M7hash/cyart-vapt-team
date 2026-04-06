@@ -30,6 +30,7 @@ Exploited using privilege escalation technique:
 Successfully escalated privileges to root
 
 ## 3.3 Result Log
+
 Task ID	Technique	Target IP	Status	Outcome
 010	SUID Exploit	192.168.56.5	Success	Root Shell
 
@@ -48,7 +49,7 @@ crontab -e
 Inserted:
 
 * * * * * /tmp/shell.sh
-## 4.2 Persistence Summary (50 Words)
+## 4.2 Persistence Summary
 
 A cron job was configured to execute a reverse shell script every minute. This ensures persistent access even after system reboot or session termination. The script reconnects to the attacker's machine, maintaining control over the compromised system without requiring re-exploitation.
 
