@@ -35,7 +35,7 @@ This lab focuses on performing **Man-in-the-Middle (MitM) attacks** and exploiti
 
 ## **5. Attack Details**
 
-### **5.1 SMB Relay Attack **
+### **5.1 SMB Relay Attack**
 
 * Configured Responder to listen for LLMNR/NBT-NS requests
 * Victim machine attempted authentication over SMB
@@ -44,7 +44,7 @@ This lab focuses on performing **Man-in-the-Middle (MitM) attacks** and exploiti
 
 ---
 
-### **5.2 Man-in-the-Middle Attack (Ettercap) **
+### **5.2 Man-in-the-Middle Attack (Ettercap)**
 
 Ettercap was used to perform ARP spoofing, positioning the attacker between the victim and gateway. Network traffic was intercepted and monitored in real time. Sensitive information such as credentials and session data could be captured, demonstrating the risks of unsecured networks and lack of proper encryption protocols.
 
