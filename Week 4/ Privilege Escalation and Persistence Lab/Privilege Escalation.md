@@ -32,14 +32,8 @@ Exploited using privilege escalation technique:
 ./vulnerable_binary -p
 Successfully escalated privileges to root
 
-## 3.3 Result Log
-
-Task ID
-Technique	Target IP	Status	Outcome
-010	SUID Exploit	192.168.56.5	Success	Root Shell
-
-## 4. Persistence
-## 4.1 Method Used: Cron Job Persistence
+## 3. Persistence
+## 3.1 Method Used: Cron Job Persistence
 
 Created a reverse shell script:
 
@@ -53,11 +47,11 @@ crontab -e
 Inserted:
 
 * * * * * /tmp/shell.sh
-## 4.2 Persistence Summary
+## 3.2 Persistence Summary
 
 A cron job was configured to execute a reverse shell script every minute. This ensures persistent access even after system reboot or session termination. The script reconnects to the attacker's machine, maintaining control over the compromised system without requiring re-exploitation.
 
-## 5. Post-Exploitation 
+## 4. Post-Exploitation 
 
 Verified root access:
 
@@ -65,12 +59,12 @@ whoami
 Checked system stability after exploitation
 Ensured persistence mechanism works after reboot simulation
 
-## 6. Key Learnings
+## 5. Key Learnings
 Enumeration is critical for identifying privilege escalation vectors
 SUID misconfigurations are common and exploitable
 Persistence ensures long-term access beyond initial compromise
 Cron jobs provide simple and effective persistence mechanisms
 
-## 7. Conclusion
+## 6. Conclusion
 
 Privilege escalation was successfully achieved through SUID exploitation, resulting in root access. A cron-based persistence mechanism was implemented to maintain access. The lab demonstrates a realistic post-exploitation workflow used in penetration testing engagements.
