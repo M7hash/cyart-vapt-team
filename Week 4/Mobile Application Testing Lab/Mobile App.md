@@ -43,12 +43,6 @@ Potential for privilege escalation via IPC misuse.
 Recommendation:
 Restrict component exposure and enforce proper permission checks.
 
-## 6. Checklist
-
-Run MobSF for static analysis
-Hook functions with Frida
-Test IPC vulnerabilities using Drozer
-
-## 7. Conclusion
+## 6. Conclusion
 
 The mobile application exhibited multiple security weaknesses, including insecure data storage and weak runtime protections. Proper secure coding practices, encryption, and runtime defenses must be implemented to enhance the overall security posture of the application.
