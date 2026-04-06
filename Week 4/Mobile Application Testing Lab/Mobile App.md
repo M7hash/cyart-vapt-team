@@ -26,7 +26,8 @@ Use secure storage mechanisms such as Android Keystore and encrypt sensitive dat
 
 Objective: Hook application functions and bypass authentication.
 
-Summary 
+Summary :
+
 Frida was used to dynamically hook authentication functions within the application. By intercepting function calls, authentication checks were bypassed, allowing unauthorized access. This demonstrated weak runtime protections and lack of integrity checks. Proper validation and anti-hooking mechanisms should be implemented to prevent such attacks.
 
 ## 5. IPC Testing (Drozer)
