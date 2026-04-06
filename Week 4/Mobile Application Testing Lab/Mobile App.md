@@ -5,7 +5,9 @@ This lab focuses on identifying vulnerabilities in Android applications using st
 
 ## 2. Tools Used
 MobSF (Mobile Security Framework)
+
 Frida
+
 Drozer
 ## 3. Static Analysis Findings
 
