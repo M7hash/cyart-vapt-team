@@ -13,9 +13,6 @@ Drozer
 
 Objective: Analyze APK for insecure storage vulnerabilities using MobSF.
 
-Test ID	Vulnerability	Severity	Target App
-016	Insecure Storage	High	test.apk
-
 Description:
 MobSF analysis revealed that sensitive data is stored insecurely within the application. The app uses unencrypted storage mechanisms, exposing user data to potential attackers.
 
